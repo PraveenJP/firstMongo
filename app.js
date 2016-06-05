@@ -11,6 +11,10 @@ var db = 'mongodb://localhost/book';
 
 mongoose.connect(db);
 
+app.get('/',function(req, res){
+	console.log('Awesome mongoDB');
+});
+
 app.listen(PORT,function(err){
 	if(err){
 		console.log(err);
