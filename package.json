@@ -1,0 +1,26 @@
+{
+  "name": "firstmongo",
+  "version": "1.0.0",
+  "description": "This is practice set mongoDB",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git remote add origin https://github.com/PraveenJP/firstMongo.git"
+  },
+  "keywords": [
+    "mongodb",
+    "mongoose",
+    "express",
+    "nodejs"
+  ],
+  "author": "Praveen J",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.19"
+  }
+}
