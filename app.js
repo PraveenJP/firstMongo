@@ -58,7 +58,7 @@ app.post('/books',function(req,res){
 		if(err){
 			res.send('Error savig boos');
 		}else{
-			res.send(book);
+			res.send(200);
 		}
 	})
 });
@@ -70,6 +70,31 @@ app.post('/addBook',function(req,res){
 			res.send(err);
 		}else{
 			res.send(book);
+		}
+	});
+});
+
+// Update book in the database
+app.put('/books/:id',function(req,res){
+	Book.findOneAndUpdate(
+		{_id:req.params.id},
+		{$set:{title:req.body.title,author:req.body.author,category:req.body.category}},
+		{upsert:true},function(err,book){
+			if(err){
+				res.send(err);
+			}else{
+				res.send(200);
+			}
+	});
+});
+
+// Delete book from the database
+app.delete('/books/:id',function(req,res){
+	Book.findOneAndRemove({_id:req.params.id},function(err,book){
+		if(err){
+			res.send(err);
+		}else{
+			res.send(200);
 		}
 	});
 });
