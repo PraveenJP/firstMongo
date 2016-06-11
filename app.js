@@ -63,6 +63,17 @@ app.post('/books',function(req,res){
 	})
 });
 
+// Add book into the database Method 2
+app.post('/addBook',function(req,res){
+	Book.create(req.body,function(err,book){
+		if(err){
+			res.send(err);
+		}else{
+			res.send(book);
+		}
+	});
+});
+
 //Listen Port
 app.listen(PORT,function(err){
 	if(err){
