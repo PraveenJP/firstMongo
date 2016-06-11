@@ -6,10 +6,18 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Book = require('./book.model');
 
+// Port Config
 var PORT = process.env.PORT || 3000;
-var db = 'mongodb://localhost/book';
 
+// MongoDB Connection
+var db = 'mongodb://localhost/book';
 mongoose.connect(db);
+
+// Use Body parser
+app.use(bodyParser.json()); // Allow to use json parse element
+app.use(bodyParser.urlencoded({ // Allow use to receive the body element through the url
+	extended:true
+}));
 
 // Start Domain
 app.get('/',function(req, res){
@@ -38,6 +46,24 @@ app.get('/books/:id',function(req,res){
 	});
 });
 
+// Add Book into the Database
+app.post('/books',function(req,res){
+	var newBook = new Book();
+
+	newBook.title = req.body.title;
+	newBook.author = req.body.author;
+	newBook.category = req.body.category;
+
+	newBook.save(function(err, book){
+		if(err){
+			res.send('Error savig boos');
+		}else{
+			res.send(book);
+		}
+	})
+});
+
+//Listen Port
 app.listen(PORT,function(err){
 	if(err){
 		console.log(err);
