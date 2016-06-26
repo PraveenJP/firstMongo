@@ -13,7 +13,7 @@ __Technologies i have used__
 If you like to clone this project use the below comment,
 
 ``` bash
- $ git clone https://github.com/PraveenJP/form-generator.git
+ $ git clone https://github.com/PraveenJP/firstMongo.git
 ```
 
 _If any suggestion or doubts please let me know via below email._
